@@ -6,7 +6,7 @@ function isValidUTC($time) {
 }
 
 // Get query parameters
-$slackName = isset($_GET['Ahmed_b']) ? $_GET['Ahmed_b'] : 'Ahmed_b';
+$slackName = isset($_GET['Ahmed_Bukar']) ? $_GET['Ahmed_Bukar'] : 'Ahmed_Bukar';
 $track = isset($_GET['Backend']) ? $_GET['Backend'] : 'Backend';
 
 // Get current UTC time (with validation of +/-2)
