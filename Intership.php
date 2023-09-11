@@ -1,42 +1,31 @@
 <?php
-// Function to validate UTC time
-function isValidUTC($time) {
-    $pattern = '/^(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})$/';
-    return preg_match($pattern, $time) === 1 && strtotime($time) !== false;
-}
+$response = array();
+$cdate =  gmdate("Y-m-d\TH:i:s\Z");
+$cday = date ('l');
+$github_file = "https://github.com/phist0/HNG360/blob/main/api01.php";
+$github_repo = "https://github.com/phist0/HNGX360";
+$status = 200;
+$slack_n = $_GET['ahmed_bukar'];
+$track_n = $_GET['backend'];	
 
-// Get query parameters
-$slackName = isset($_GET['Ahmed_Bukar']) ? $_GET['Ahmed_Bukar'] : 'Ahmed_Bukar';
-$track = isset($_GET['Backend']) ? $_GET['Backend'] : 'Backend';
+/*
+// $response[0]["slack_name"] = "ahmed_bukar";
+$response[0]["slack"] = slack_name;
+$response[0]["current_day"] = $cday;
+$response[0]["utc_time"] = $cdate;
+// $response[0]["track"] = "backend";
+$response[0]["track"] = $track_n;
+$response[0]["github_file_url"] = $github_file;
+$response[0]["github_repo_url"] = $github_repo;
+$response[0]["status_code"] = $status;
 
-// Get current UTC time (with validation of +/-2)
-$currentUTCTime = gmdate('Y-m-d H:i:s');
 
-// Get current day of the week
-$currentDayOfWeek = gmdate('l');
+echo json_encode($response, JSON_PRETTY_PRINT);
 
-// Get GitHub URLs
-$githubFileURL = 'https://github.com/yerwahub/HNG360/blob/main/path/to/task1/Intership.php';
-$githubSourceURL = 'https://github.com/yerwahub/HGN360';
+ */
 
-// Validate UTC time (+/- 2 hours)
-if (!isValidUTC($currentUTCTime)) {
-    $currentUTCTime = 'Invalid UTC time';
-}
+$response2 = ["slack_name" => $slack_n, "current_day" => $cday, "utc_time" => $cdate, "track" => $track_n, "github_file_url" => $github_file, "github_repo_url" => $github_repo, "status_code" => $status];
 
-// Prepare the response data
-$response = [
-    'slackName' => $slackName,
-    'currentDayOfWeek' => $currentDayOfWeek,
-    'currentUTCTime' => $currentUTCTime,
-    'track' => $track,
-    'githubFileURL' => $githubFileURL,
-    'githubSourceURL' => $githubSourceURL,
-    'statusCode' => 200,
-];
+header('Content-Type: application/json'); 
 
-// Set the content type to JSON
-header('Content-Type: application/json');
-
-// Output the JSON response
-echo json_encode($response);
+echo json_encode($response2);
