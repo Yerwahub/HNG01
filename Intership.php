@@ -2,8 +2,8 @@
 $response = array();
 $cdate =  gmdate("Y-m-d\TH:i:s\Z");
 $cday = date ('l');
-$github_file = "https://github.com/phist0/HNG360/blob/main/api01.php";
-$github_repo = "https://github.com/phist0/HNGX360";
+$github_file = "https://github.com/phist0/HNGX/blob/main/intership.php";
+$github_repo = "https://github.com/phist0/HNGX";
 $status = 200;
 $slack_n = $_GET['ahmed_bukar'];
 $track_n = $_GET['backend'];	
